@@ -17,28 +17,28 @@ class Login extends Component {
     }
 
     handleLoginSubmit = async () => {
-        const {email, password} = this.state;
-        const {history} = this.props;
-        const res = await this.props.loginAPI({email, password}).catch(err => err);
-        if(res){
-            console.log('Login Success');
+        const { email, password } = this.state;
+        const { history } = this.props;
+        const res = await this.props.loginAPI({ email, password }).catch(err => err);
+        if (res) {
+            console.log('Login Success', res);
             this.setState({
                 email: '',
                 password: ''
             })
             history.push('/')
-        }else {
+        } else {
             console.log('Login Fail');
         }
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="auth-container">
                 <div className="auth-card">
                     <p className="auth-title">Login Page</p>
-                    <input className="input" id="email" placeholder="Email" type="text" onChange={this.handleChangeText} value={this.state.email}/>
-                    <input className="input" id="password" placeholder="Password" type="password" onChange={this.handleChangeText} value={this.state.password}/>
+                    <input className="input" id="email" placeholder="Email" type="text" onChange={this.handleChangeText} value={this.state.email} />
+                    <input className="input" id="password" placeholder="Password" type="password" onChange={this.handleChangeText} value={this.state.password} />
                     <Button onClick={this.handleLoginSubmit} title="Login" loading={this.props.isLoading} />
                 </div>
             </div>
